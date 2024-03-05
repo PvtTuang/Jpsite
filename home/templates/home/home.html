@@ -1,0 +1,79 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+</head>
+<body>
+  <div class="navbar">
+    <nav class="navbar">
+      {% if request.user.is_authenticated %}
+          <p>{{ request.user.username }}</p>
+          <a href="{% url 'logout' %}">ลงชื่อออก</a>
+      {% else %}
+          <a href="{% url 'login' %}">Login</a>
+          <a href="{% url 'register' %}">Signup</a>
+      {% endif %}
+  </nav>
+  </div>
+  
+  
+  <h1>JP Computer</h1>
+
+  <ul>
+
+    <div class="formgroup">
+      <div>
+        {% if request.user.is_authenticated and request.user.user_type == 'owner' %}
+        <a href="{% url 'posts' %}">Posts</a>
+      {% endif %}
+  
+      <form method="POST" action="{% url 'search' %}">
+        {% csrf_token %}
+        <div class="form-group">
+            <input type="text" class="form-control" name="search" placeholder="ค้นหาสินค้า">
+            <select class="form-control" name="category">
+              <option value="">ทั้งหมด</option>
+              <option value="Computer">คอมพิวเตอร์</option>
+              <option value="Laptop">โน๊ตบุ๊ค</option>
+              <option value="Computer Accessory">อุปกรณ์คอมพิวเตอร์</option>
+              <option value="Speaker">ลำโพง</option>
+          </select>
+          <button type="submit" class="btn btn-primary">ค้นหา</button>
+          </form>
+      </div>
+    </div>
+  </div>        
+
+  <div class="showdetail">
+    {% if products %}
+      <ul>
+        {% for product in products %}
+          <div class="product-box">
+            <a href="{% url 'product_detail' product.pk %}">
+              <img src="{{ product.image1.url }}" alt="{{ product.name }}">
+              <div class="product-info">
+                <h3>{{ product.name }}</h3>
+                <p>{{ product.description }}</p>
+                <p>ราคา: {{ product.price }}</p>
+              </div>
+            </a>
+          </div>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>ไม่พบผลลัพธ์สำหรับ "{{ search_query }}"</p>
+    {% endif %}
+  </div>
+  
+
+
+
+    
+    
+  
+</body>
+</html>
