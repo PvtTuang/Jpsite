@@ -92,3 +92,64 @@ h1 {
     margin: 5px 0;
   }
   
+  .product-box {
+    display: inline-block;
+    width: 200px; 
+    margin: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .photoimage img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: flex;
+  }
+  
+  .product-info {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .product-box {
+    display: inline-block;
+    width: 200px; 
+    height: 300px; 
+    margin: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease; 
+    margin-top: 50px;
+  }
+  
+  .product-box:hover {
+    transform: scale(1.05); 
+    cursor: pointer; 
+  }
+  
+  .product-box:active {
+    transform: scale(0.95); 
+  }
+  
+  .product-info p {
+    margin: 5px 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+.buttomposts {
+  background-color: red;
+  color: white;
+  height: 50px;
+  width: 200px;
+  margin-top: 30px;
+  font-weight: bold;
+  font-size: 15px;
+  text-transform: uppercase;
+  border-radius: 20px;
+}
+  

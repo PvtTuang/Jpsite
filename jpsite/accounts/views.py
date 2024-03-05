@@ -27,11 +27,9 @@ def login(request):
             user = authenticate(request, username=username, password=password)
             if user is not None:
                 auth_login(request, user)
-                next_url = request.GET.get('next')
-                if next_url:
-                    return redirect(next_url) 
-                else:
-                    return redirect('home')  
+                return redirect('home')
+            else:
+                form.add_error(None,'ชื่อผู้ใช้หรือรหัสผ่านผิดพลาด กรุณาลองอีกครั้ง') 
     else:
         form = LoginForm()
     return render(request, 'accounts/login.html', {'form': form})

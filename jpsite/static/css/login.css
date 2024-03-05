@@ -1,0 +1,57 @@
+body {
+    background-color:  #F57E20;
+}
+
+.boxlogin {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 500px;
+    height: 500px;
+    width: 800px;
+    margin: 50px auto;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.boxlogin h1 {
+    font-size: 50px;
+}
+
+.boxlogin form{
+    height: 200px;
+}
+
+.form-group {
+    margin-bottom: 10px;
+    display: flex; 
+    align-items: center; 
+}
+
+label {
+    display: inline-block;
+    font-weight: bold;
+    font-size: 16px;
+    color: #333;
+    margin-right: 10px; 
+}
+
+input[type="text"],
+input[type="password"] {
+    flex: 1; 
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
