@@ -1,18 +1,33 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Product</title>
+    <link rel="stylesheet" href="{% static 'css/product.css' %}">
 </head>
 <body>
-    <h1>Product List</h1>
+    {% include 'home/navbar.html' %}
+    <br>
+    <div class="bottoncreate">
+        <a href="{% url 'product_create' %}">
+            <button>
+                Create Product</a>
+            </button>
+            
+    </div><br>
+    
+    <div class="product">
+        <h1>Product List</h1>
     <ul>
         {% for product in products %}
             <li><a href="{% url 'product_detail' product.pk %}">{{ product.name }}</a></li>
         {% endfor %}
     </ul>
-    <a href="{% url 'product_create' %}">Create Product</a>
+    </div>
+    
+    
 
 </body>
 </html>

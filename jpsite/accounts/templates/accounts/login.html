@@ -10,24 +10,28 @@
 <body>
     <div class="boxlogin">
         <h1>Login</h1>
-        <form method="POST">
-            {% csrf_token %}
-            <div class="form-group">
-                {{ form.username.label_tag }}
-                {{ form.username }}
-            </div><br>
-            <div class="form-group">
-                {{ form.password.label_tag }}
-                {{ form.password }}
-            </div><br>
-            <button type="submit">เข้าสู่ระบบ</button>
-            <a href="{% url 'register' %}">
-            <button>
-                สร้างบัญชีเลย
-            </button>
-        </a>
+        {% if form.non_field_errors %}
+        <div class="error-message">
+            <p>{{ form.non_field_errors }}</p>
+        </div>
+    {% endif %}
+    <form method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            {{ form.username.label_tag }}
+            {{ form.username }}
+        </div><br>
+        <div class="form-group">
+            {{ form.password.label_tag }}
+            {{ form.password }}
+        </div><br>
+        <button type="submit">เข้าสู่ระบบ</button>
     </form>
+    <a href="{% url 'register' %}">
+        <button type="submit">สร้างบัญชีเลย</button>
+    </a>
     </div>
     
+   
 </body>
 </html>

@@ -1,0 +1,16 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+<div class="navbar">
+    <nav class="navbar">
+        <div class="backhome">
+            <a href="{% url 'home' %}">หน้าหลัก</a>
+        </div>
+        {% if request.user.is_authenticated %}
+            <p>{{ request.user.username }}</p>
+            <a href="{% url 'logout' %}">ลงชื่อออก</a>
+        {% else %}
+            <a href="{% url 'login' %}">เข้าสู่ระบบ</a>
+            <a href="{% url 'register' %}">สมัครสมาชิก</a>
+        {% endif %}
+    </nav>
+</div>

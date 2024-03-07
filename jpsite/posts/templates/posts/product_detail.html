@@ -4,10 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Detail</title>
+    <link rel="stylesheet" href="{% static 'css/detail.css' %}">
 </head>
 <body>
-    <h1>{{ product.name }}</h1>
+    {% include 'home/navbar.html' %}
+    <br>
+    <div class="formposts">
+        <h1>{{ product.name }}</h1>
     <p>Description: {{ product.description }}</p>
     <p>Price: {{ product.price }}</p>
     {% if request.user.is_authenticated and request.user.user_type == 'owner' %}
@@ -22,16 +26,35 @@
         <div class="form-group">
             <label for="idline">ID Line:</label>
             <input type="text" class="form-control" id="idline" name="idline">
+            <button type="submit" class="btn btn-primary" id="interestBtn">ส่งข้อความ</button>
         </div>
-        <button type="submit" class="btn btn-primary" id="interestBtn">ส่งข้อความ</button>
     </form>
-    <img src="{{ product.image1.url }}" alt="{{ product.name }}">
-    {% if product.image2 %}
-    <img src="{{ product.image2.url }}" alt="{{ product.name }}">
-    {% endif %}
-    {% if product.image3 %}
-    <img src="{{ product.image3.url }}" alt="{{ product.name }}">
-    {% endif %}
+    <div>
+        <a href="https://web.facebook.com/profile.php?id=100051428954609"  target="_blank">
+            <button class="contact-button">
+                ติดต่อผ่าน Facebook
+            </button> 
+        </a>
+    </div>
+    </div>
+    <br>
+    <div class="imageshow">
+        <div class="image-box">
+            <img src="{{ product.image1.url }}" alt="{{ product.name }}">
+        </div>
+        {% if product.image2 %}
+        <div class="image-box">
+            <img src="{{ product.image2.url }}" alt="{{ product.name }}">
+        </div>
+        {% endif %}
+        {% if product.image3 %}
+        <div class="image-box">
+            <img src="{{ product.image3.url }}" alt="{{ product.name }}">
+        </div>
+        {% endif %}
+    </div>
+    
+    
     
 </body>
 </html>

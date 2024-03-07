@@ -44,7 +44,6 @@ INSTALLED_APPS = [
     'home',
     'posts',
     'notify',
-    'sales',
 ]
 
 MIDDLEWARE = [

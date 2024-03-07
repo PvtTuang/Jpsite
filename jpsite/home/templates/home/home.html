@@ -1,4 +1,5 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,18 +9,7 @@
     <link rel="stylesheet" href="{% static 'css/home.css' %}">
 </head>
 <body>
-  <div class="navbar">
-    <nav class="navbar">
-      {% if request.user.is_authenticated %}
-          <p>{{ request.user.username }}</p>
-          <a href="{% url 'logout' %}">ลงชื่อออก</a>
-      {% else %}
-          <a href="{% url 'login' %}">เข้าสู่ระบบ</a>
-          <a href="{% url 'register' %}">สมัครสมาชิก</a>
-      {% endif %}
-  </nav>
-  </div>
-  
+  {% include 'home/navbar.html' %}
   
   <h1>JP Computer</h1>
 
